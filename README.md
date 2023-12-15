@@ -27,15 +27,11 @@ If you have an image path as an argument:
 
 #### GNU/Linux
 
-<code>
-python3 img2txt.py "/path/to/your/image.jpg"
-</code>
+<code>python3 img2txt.py "/path/to/your/image.jpg"</code>
 
 #### Windows
 
-<code>
-python img2txt.py "C:\Users\Your_Username\path\to\your\image.jpg"
-</code>
+<code>python img2txt.py "C:\Users\Your_Username\path\to\your\image.jpg"</code>
 
 If you don't provide an argument, the script will prompt you to enter the image path.
 
