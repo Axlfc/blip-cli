@@ -46,21 +46,24 @@ To create a `blip_process_single_image` alias in GNU/Linux:
 
 1. Edit `~/.bash_aliases` and add:
 
-    ```bash
-    blip_process_single_image() {
-        local script_path="path/to/img2txt.py"
+```bash
+ blip_process_single_image() {
+     local script_path="path/to/img2txt.py"
 
-        if [ -z "$1" ]; then
-            echo "Usage: blip_process_single_image <image_path>"
-            return 1
-        fi
+     if [ -z "$1" ]; then
+         echo "Usage: blip_process_single_image <image_path>"
+         return 1
+     fi
 
-        local image_path="$1"
-        python3 "$script_path" "$image_path"
-    }
+     local image_path="$1"
+     python3 "$script_path" "$image_path"
+ }
+```
 
-    blip_process_single_image "/path/to/single/image.jpg"
-    ```
+##### Call the function `blip_process_single_image`
+```bash
+blip_process_single_image "/path/to/single/image.jpg"
+```
 
 > [!NOTE]
 > Ensure the line `source ~/.bash_aliases` is present in `~/.bashrc`.
@@ -84,7 +87,10 @@ function Invoke-BlipProcessSingleImage {
 
     & python $ScriptPath $ImagePath
 }
+```
 
+##### Call the function `Invoke-BlipProcessSingleImage`
+```powershell
 Invoke-BlipProcessSingleImage -ImagePath "C:\path\to\single\image.jpg"
 ```
 
@@ -106,7 +112,10 @@ blip_process_batch_images() {
         python3 "$script_path" "$image"
     done
 }
+```
 
+##### Call the function `blip_process_batch_images`
+```bash
 blip_process_batch_images "/path/to/image/folder"
 ```
 
@@ -128,7 +137,9 @@ function Invoke-BlipProcessBatchImages {
         & python $ScriptPath $_.FullName
     }
 }
-
+```
+##### Call the function `Invoke-BlipProcessBatchImages`
+```powershell
 Invoke-BlipProcessBatchImages -FolderPath "C:\path\to\image\folder"
 ```
 
