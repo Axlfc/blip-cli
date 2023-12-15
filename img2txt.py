@@ -20,7 +20,8 @@ firefox_options = webdriver.FirefoxOptions()
 firefox_options.add_argument('--profile')
 firefox_options.add_argument(firefox_profile_path)
 
-output_file_path = "output.txt"  # Specify the file path for output
+# Ensure output.txt is written in the script repository folder
+output_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "output.txt")
 
 try:
     driver = webdriver.Firefox(options=firefox_options)
