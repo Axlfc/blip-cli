@@ -5,7 +5,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium import webdriver
 import platform
-from time import sleep
 
 os.environ['MOZ_HEADLESS'] = '1'
 
@@ -25,8 +24,8 @@ output_file_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "ou
 
 try:
     driver = webdriver.Firefox(options=firefox_options)
-except:
-    print("ERROR")
+except Exception as e:
+    print("ERROR: ", e)
     driver.quit()
 
 
@@ -39,8 +38,6 @@ def get_blip_caption(image_path):
     try:
         # Navigate to the BLIP webpage
         driver.get("https://replicate.com/salesforce/blip")
-
-        sleep(3)
 
         # Find the task selection dropdown and choose "image_captioning"
         task_dropdown = WebDriverWait(driver, 10).until(
@@ -56,23 +53,15 @@ def get_blip_caption(image_path):
         # Upload the image using the file path
         upload_input.send_keys(os.path.abspath(image_path))
 
-        # Wait for the caption to be generated
-        WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'div[role="tabpanel"][aria-labelledby="preview"]'))
-        )
-
         # Click the "Run" button
         run_button = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, 'button[type="submit"][form="input-form"]'))
         )
         run_button.click()
 
-        # Introduce a delay to allow time for the caption to be updated
-        sleep(2)
-
-        # Wait for the caption text to appear
+        # Wait for the loader image to disappear, indicating that the caption is generated
         WebDriverWait(driver, 30).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, 'div[data-testid="value-output-string"]'))
+            EC.invisibility_of_element_located((By.CSS_SELECTOR, 'path[style*="opacity: 0.75;"]'))
         )
 
         # Extract the caption text
