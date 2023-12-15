@@ -108,7 +108,7 @@ blip_process_batch_images "/path/to/image/folder"
 ```powershell
 function Invoke-BlipProcessBatchImages {
     param (
-        [string]$ScriptPath = "C:\path\to\your_script.py",
+        [string]$ScriptPath = "C:\path\to\img2txt.py",
         [string]$FolderPath
     )
 
