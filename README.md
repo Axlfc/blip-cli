@@ -10,7 +10,7 @@ This project automates the generation of BLIP captions for images using the Repl
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/your-repository.git
+    git clone https://github.com/Axlfc/blip-cli.git
     ```
 
 2. Install dependencies:
