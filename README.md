@@ -145,7 +145,7 @@ Invoke-BlipProcessBatchImages -FolderPath "C:\path\to\image\folder"
 
 ## Additional Notes
 
-- **Dependencies:** Ensure you have Python and pip installed.
+- **Dependencies:** Ensure you have Mozilla Firefox, Python and pip installed.
 
 > [!IMPORTANT]
 > Adjust paths to the script files based on your project structure.
