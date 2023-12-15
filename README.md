@@ -7,13 +7,13 @@ This project automates the generation of BLIP captions for images using the Repl
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
 
     ```bash
     git clone https://github.com/Axlfc/blip-cli.git
     ```
 
-2. Install dependencies:
+2. **Install dependencies:**
 
     ```bash
     pip install -r requirements.txt
@@ -27,41 +27,48 @@ If you have an image path as an argument:
 
 #### GNU/Linux
 
-<code>python3 img2txt.py "/path/to/your/image.jpg"</code>
+```bash
+python3 img2txt.py "/path/to/your/image.jpg"
+```
 
 #### Windows
 
-<code>python img2txt.py "C:\Users\Your_Username\path\to\your\image.jpg"</code>
+```bash
+python img2txt.py "C:\Users\Your_Username\path\to\your\image.jpg"
+```
 
 If you don't provide an argument, the script will prompt you to enter the image path.
 
 ### Image Captions Processing Functions
 
 #### Bash
-If you want that `blip_process_single_image` alias in GNU/Linux, you can edit `~/.bash_aliases` file and add:
+To create a `blip_process_single_image` alias in GNU/Linux:
 
-> [!NOTE]  
-> Make sure the line 'source ~/.bash_aliases' is present in ~/.bashrc if you encounter errors.
+1. Edit `~/.bash_aliases` and add:
 
-```bash
-blip_process_single_image() {
-    local script_path="path/to/img2txt.py"
+    ```bash
+    blip_process_single_image() {
+        local script_path="path/to/img2txt.py"
 
-    if [ -z "$1" ]; then
-        echo "Usage: blip_process_single_image <image_path>"
-        return 1
-    fi
+        if [ -z "$1" ]; then
+            echo "Usage: blip_process_single_image <image_path>"
+            return 1
+        fi
 
-    local image_path="$1"
-    python3 "$script_path" "$image_path"
-}
+        local image_path="$1"
+        python3 "$script_path" "$image_path"
+    }
 
-blip_process_single_image "/path/to/single/image.jpg"
-```
+    blip_process_single_image "/path/to/single/image.jpg"
+    ```
+
+> [!NOTE]
+> Ensure the line `source ~/.bash_aliases` is present in `~/.bashrc`.
 
 #### PowerShell
-If you want to run a simple command `Invoke-BlipProcessSingleImage` to run BLIP Image Captioning in Windows Terminal, 
-you can edit the 'C:\Users\Your_Username\Documents\WindowsPowershell\Microsoft.PowerShell_profile.ps1' file and add to it the following lines:
+To run a simple command `Invoke-BlipProcessSingleImage` in Windows Terminal:
+
+Edit 'C:\Users\Your_Username\Documents\WindowsPowershell\Microsoft.PowerShell_profile.ps1' and add:
 
 ```powershell
 function Invoke-BlipProcessSingleImage {
@@ -125,5 +132,9 @@ function Invoke-BlipProcessBatchImages {
 Invoke-BlipProcessBatchImages -FolderPath "C:\path\to\image\folder"
 ```
 
+## Additional Notes
+
+- **Dependencies:** Ensure you have Python and pip installed.
+
 > [!IMPORTANT]
-> Adjust paths based on your project structure.
+> Adjust paths to the script files based on your project structure.
